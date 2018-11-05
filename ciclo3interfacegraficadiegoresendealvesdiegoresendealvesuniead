@@ -1,0 +1,80 @@
+# -* - coding: latin1 -*-
+# IMPORTA WXPYTHON
+import self
+import wx
+
+# wx.TextCtrl()
+# wx.StaticText()
+
+from wx.py.PyFilling import app
+
+
+class Main ( wx.Frame ):
+
+    # CLASSE QUE DEFINE A JANELA PRINCIPAL DO PROGRAMA
+    def __init__(self, parent, id, title):
+        # INICIALIZA A CLASSE
+
+
+
+        # DEFINE A JANELA USANDO O __INIT__DA CLASSE MAE
+        wx.Frame.__init__ ( self, parent, id, title, size=(600, 600))
+
+        #sz = wxBoxSizer(wx.VERTICAL)
+
+    # CONTROLES
+        #input_text = wx.TextCtrl(self, -1)
+        #static_text = wx.StaticText(self, -1, u'ISTO É UM TEXTO ESTÁTICO')
+        #sz . Add(input_text, 1, wx. EXPAND)
+        #sz . Add (static_text, 1, wx. EXPAND)
+
+        #self.SetSizer(sz)
+
+        # CRIA UMA CAIXA DE TEXTO
+        self.text = wx.TextCtrl( self, style=wx.TE_MULTILINE)
+
+        # PEGA A FONTE DO PROGRAMA
+        font = file ( __file__, 'rb' ).read ().decode ( 'latin1')
+
+        # CARREGA A FONTE DO PROGRAMA NA CAIXA DE TEXTO
+        self.text.SetLabel ( font )
+
+        # MOSTRA A JANELA
+        self.Show ( True )
+
+
+if __name__ == '__main__':
+    # CRIA UM OBJETO 'APLICAÇÃO' DO WXPYTHON
+    app = wx.App()
+
+    # CRIA UM OBJETO 'JANELA' A PARTIR DA CLASSE
+    frame = Main ( None, wx.ID_ANY, 'FONTE')
+
+    # INICIA O LOOP DE TRATAMENTO DE EVENTOS
+    app.MainLoop ()
+
+
+#CARREGA O TEXO NA CAIXA DE TEXTO
+#self.control.SetLabel(file(self.fn, 'rb').read())
+#dialog.Destroy()
+
+
+
+peso = float(input('QUAL É O SEU PESO?? (KG)'))
+altura = float(input('QUAL É A SUA ALTURA? (M)'))
+
+imc = peso / (altura ** 2)
+
+print('O IMC DESSA PESSOA É {:.1f}'.format(imc))
+
+if imc < 18.5:
+    print('VOCE ESTÁ ABAIXO DO PESO NORMAL!')
+elif 18.5 <= imc < 25:
+    print('PARABÉNS, VOCE ESTÁ NA FAIXA DE PESO NORMAL!')
+elif 25 <= imc < 30:
+    print('VOCE ESTÁ EM SOBREPESO!')
+elif 30 <= imc < 40:
+    print('VOCE ESTÁ EM UBESIDADE!')
+elif imc >= 40:
+    print('VOCE ESTÁ EM OBESIDADE MORBIDA, CUIDADO!')
+
